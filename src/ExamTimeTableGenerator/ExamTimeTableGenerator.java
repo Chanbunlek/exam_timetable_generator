@@ -84,12 +84,15 @@ class ExamTimeTableGenerator {
         boolean isTimeAndRoomAvailable = isTimeAndRoomAvailable(time, room);
         if (!isTimeAndRoomAvailable) {
             System.out.println("The time and room are already scheduled for another exam. Please choose a different time and room.");
+            scanner.close();
             return;
         }
 
         Exam newExam = new Exam(subject, date, time, room, teacherName, yearOfStudent, day);
         addExam(newExam);
         System.out.println("New exam added successfully!");
+
+        scanner.close();
     }
 
     public boolean isTimeAndRoomAvailable(String time, String room) {

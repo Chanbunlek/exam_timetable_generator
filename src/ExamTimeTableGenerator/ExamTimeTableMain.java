@@ -60,5 +60,7 @@ public class ExamTimeTableMain {
             }
             System.out.println();
         } while (choice != 4);
+
+        scanner.close();
     }
 }

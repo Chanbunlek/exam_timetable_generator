@@ -1,6 +1,6 @@
 package ExamTimeTableGenerator;
 
-class Exam {
+public class Exam {
     private final String subject;
     private final String date;
     private final String time;
