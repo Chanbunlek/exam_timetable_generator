@@ -1,5 +1,6 @@
 package ExamTimeTableGenerator;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class ExamTimeTableMain {
@@ -17,12 +18,14 @@ public class ExamTimeTableMain {
         Scanner scanner = new Scanner(System.in);
         int choice;
         do {
-            System.out.println("------- Exam Time Table Generator Menu-------");
+            System.out.println("------- Exam Time Table Generator Menu -------");
             System.out.println("1. Add New Exam");
             System.out.println("2. Remove Exam");
-            System.out.println("3. Generate Time Table");
-            System.out.println("4. Quit");
-            System.out.println("----------------------------------------");
+            System.out.println("3. Update Exam");
+            System.out.println("4. Generate Time Table");
+            System.out.println("5. Clear Screen");
+            System.out.println("6. Quit");
+            System.out.println("---------------------------------------------");
             System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
@@ -33,11 +36,11 @@ public class ExamTimeTableMain {
                     break;
 
                 case 2:
-                    System.out.print("Enter the subject of the exam to remove:");
-                    String subject = scanner.nextLine();
+                    System.out.print("Enter the subject of the exam to remove: ");
+                    String subjectToRemove = scanner.nextLine();
                     boolean examRemoved = false;
                     for (Exam exam : timeTableGenerator.exams) {
-                        if (exam.getSubject().equalsIgnoreCase(subject)) {
+                        if (exam.getSubject().equalsIgnoreCase(subjectToRemove)) {
                             timeTableGenerator.removeExam(exam);
                             System.out.println("Exam removed successfully!");
                             examRemoved = true;
@@ -48,19 +51,47 @@ public class ExamTimeTableMain {
                         System.out.println("Exam not found in the timetable.");
                     }
                     break;
+
                 case 3:
+                    System.out.print("Enter the subject of the exam to update: ");
+                    String subjectToUpdate = scanner.nextLine();
+                    boolean examUpdated = false;
+                    for (Exam exam : timeTableGenerator.exams) {
+                        if (exam.getSubject().equalsIgnoreCase(subjectToUpdate)) {
+                            timeTableGenerator.removeExam(exam);
+                            timeTableGenerator.insertNewExam();
+                            System.out.println("Exam updated successfully!");
+                            examUpdated = true;
+                            break;
+                        }
+                    }
+                    if (!examUpdated) {
+                        System.out.println("Exam not found in the timetable.");
+                    }
+                    break;
+
+                case 4:
                     timeTableGenerator.generateTimeTable();
                     break;
-                case 4:
+
+                case 5:
+                    clearScreen();
+                    break;
+
+                case 6:
                     System.out.println("Thank you for using the Exam Time Table Generator!");
                     break;
+
                 default:
                     System.out.println("Invalid choice. Please enter a valid option.");
                     break;
             }
             System.out.println();
-        } while (choice != 4);
-
+        } while (choice != 6);
         scanner.close();
+    }
+
+    public static void clearScreen() {
+        
     }
 }

@@ -47,9 +47,9 @@ class ExamTimeTableGenerator {
 
     protected void displayTimeTable(List<Exam> timetable) {
         System.out.println("Exam Time Table");
-        System.out.println("--------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("%-20s%-20s%-20s%-20s%-20s%-20s%-20s%n", "Subject", "Date", "Time", "Room", "Teacher Name", "Year of Student", "Day");
-        System.out.println("--------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------------");
 
         for (Exam exam : timetable) {
             System.out.printf("%-20s%-20s%-20s%-20s%-20s%-20s%-20s%n", exam.getSubject(), exam.getDate(), exam.getTime(), exam.getRoom(), exam.getTeacherName(), exam.getYearOfStudent(), exam.getDay());
