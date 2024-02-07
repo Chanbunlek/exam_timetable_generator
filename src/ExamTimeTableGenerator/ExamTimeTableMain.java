@@ -88,7 +88,7 @@ public class ExamTimeTableMain {
             }
             System.out.println();
         } while (choice != 6);
-        scanner.close();
+
     }
 
     public static void clearScreen() {
