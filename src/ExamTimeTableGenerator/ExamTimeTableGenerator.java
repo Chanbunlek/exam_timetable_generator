@@ -1,5 +1,7 @@
 package ExamTimeTableGenerator;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 class ExamTimeTableGenerator {
     final List<Exam> exams;
@@ -50,11 +52,11 @@ class ExamTimeTableGenerator {
 
         System.out.println("Exam Time Table");
         style.line();
-        System.out.printf("%-20s%-20s%-20s%-20s%-20s%-20s%-20s%n", "Subject", "Date", "Time", "Room", "Teacher Name", "Year of Student", "Day");
+        System.out.printf("%-20s%-20s%-20s%-20s%-20s%-20s%-20s%-20s%n", "ID", "Subject", "Date", "Time", "Room", "Teacher Name", "Year of Student", "Day");
         style.line();
 
         for (Exam exam : timetable) {
-            System.out.printf("%-20s%-20s%-20s%-20s%-20s%-20s%-20s%n", exam.getSubject(), exam.getDate(), exam.getTime(), exam.getRoom(), exam.getTeacherName(), exam.getYearOfStudent(), exam.getDay());
+            System.out.printf("%-20d%-20s%-20s%-20s%-20s%-20s%-20s%-20s%n", exam.getId(), exam.getSubject(), exam.getDate(), exam.getTime(), exam.getRoom(), exam.getTeacherName(), exam.getYearOfStudent(), exam.getDay());
             style.line();
         }
     }
@@ -90,7 +92,7 @@ class ExamTimeTableGenerator {
             return;
         }
 
-        Exam newExam = new Exam(subject, date, time, room, teacherName, yearOfStudent, day);
+        Exam newExam = new Exam( exams.size(), subject, date, time, room, teacherName, yearOfStudent, day);
         addExam(newExam);
         System.out.println("New exam added successfully!");
     }
@@ -103,13 +105,5 @@ class ExamTimeTableGenerator {
             }
         }
         return true;
-    }
-
-    public void sort () {
-        int i;
-
-        for ( i = 0; i < exams.size(); i ++ ) {
-            System.out.println( exams.get( i ).getSubject());
-        }
     }
 }

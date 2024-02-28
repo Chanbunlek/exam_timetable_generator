@@ -1,6 +1,7 @@
 package ExamTimeTableGenerator;
 
 public class Exam {
+    private final int id;
     private final String subject;
     private final String date;
     private final String time;
@@ -9,7 +10,8 @@ public class Exam {
     private final int yearOfStudent;
     private final String day;
 
-    public Exam(String subject, String date, String time, String room, String teacherName, int yearOfStudent, String day) {
+    public Exam(int id, String subject, String date, String time, String room, String teacherName, int yearOfStudent, String day) {
+        this.id = id;
         this.subject = subject;
         this.date = date;
         this.time = time;
@@ -18,6 +20,8 @@ public class Exam {
         this.yearOfStudent = yearOfStudent;
         this.day = day;
     }
+
+    public int getId() { return id;}
 
     public String getSubject() {
         return subject;
